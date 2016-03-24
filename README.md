@@ -21,4 +21,4 @@ to launch server:
 
 # Want live reloads?
 
-Make sure you have this (live reload extension)[https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei] installed
+Make sure you have a [live reload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) installed
