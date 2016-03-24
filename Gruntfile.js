@@ -25,6 +25,20 @@ module.exports = function(grunt) {
       },
     },
 
+    jshint: {
+      options: {
+        force: true,
+        curly: true,
+        eqeqeq: true,
+        eqnull: true,
+        browser: true,
+        globals: {
+          jQuery: true
+        },
+      },
+      beforeconcat: ['assets/js/*.js'],
+    },
+
     watch: {
       options: {
         livereload: true,
@@ -36,7 +50,13 @@ module.exports = function(grunt) {
           livereload: true,
         },
       },
-
+      scripts :{
+        files: '**/*.js',
+        tasks: ['jshint'],
+        options: {
+          interrupt: false,
+        },
+      },
       server: {
         files: ['.rebooted'],
         options: {
@@ -82,7 +102,7 @@ module.exports = function(grunt) {
     },
 
     concurrent: {
-      target: ['nodemon', ['stylus', 'concat', 'watch']],
+      target: ['nodemon', ['stylus', 'jshint', 'concat', 'watch']],
       options: {
         logConcurrentOutput: true
       }
@@ -96,6 +116,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-concurrent');
 
   // Default task(s).

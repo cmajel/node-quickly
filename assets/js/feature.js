@@ -1,3 +1,3 @@
 $(function () {
-  console.log('some feature ish')
+  console.log('some feature ish');
 });

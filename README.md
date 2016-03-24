@@ -7,6 +7,7 @@ A quick + simple front-end starter for personal projects. Includes:
 * grunt tasks that:
  * compiles CSS
  * concats JS
+ * runs jshint
  * watches + recompiles file changes
  * launches node server
  * live reloads
