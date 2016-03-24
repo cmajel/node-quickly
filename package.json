@@ -18,6 +18,7 @@
     "grunt-execute": "^0.2.2",
     "grunt-nodemon": "^0.4.1",
     "grunt-supervisor": "^0.2.4",
+    "livereload": "^0.4.1",
     "mustache-express": "^1.2.2",
     "nodemon": "^1.9.1",
     "reload": "^0.7.0"

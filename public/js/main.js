@@ -1,6 +1,6 @@
 $(function () {
-  console.log('whoa yo')
+  console.log('some feature ish')
 });
 $(function () {
-  console.log('butt')
+  console.log('whoa main')
 });

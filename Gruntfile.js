@@ -26,13 +26,23 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      css: {
+      options: {
+        livereload: true,
+      },
+      stylus: {
         files: '**/*.styl',
         tasks: ['stylus'],
         options: {
           livereload: true,
         },
       },
+
+      server: {
+        files: ['.rebooted'],
+        options: {
+          livereload: true
+        }
+      } 
 
     },
 
