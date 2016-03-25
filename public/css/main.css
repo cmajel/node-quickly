@@ -193,8 +193,18 @@ textarea {
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
+html {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #25162c;
+}
 .that {
-  color: #f00;
+  color: #008000;
+}
+@media screen and (min-width: 992px) {
+  .that {
+    color: #f00;
+  }
 }
 .this {
   color: #00f;

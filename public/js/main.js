@@ -1,6 +1,6 @@
 $(function () {
-  console.log('some feature ish')
+  console.log('some feature ish');
 });
 $(function () {
-  console.log('whoa main');;;
+  console.log('whoa main');
 });

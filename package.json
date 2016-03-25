@@ -21,7 +21,6 @@
     "livereload": "^0.4.1",
     "mustache-express": "^1.2.2",
     "nodemon": "^1.9.1",
-    "nplaym": "^1.3.8",
     "reload": "^0.7.0"
   },
   "dependencies": {

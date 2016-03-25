@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     stylus: {
       build: {
         options: {
-          compress: false
+          compress: false,
         },
         files: {
           'public/css/main.css': 'assets/styles/main.styl',
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
         livereload: true,
       },
       stylus: {
-        files: '**/*.styl',
+        files: '**/**.styl',
         tasks: ['stylus'],
         options: {
           livereload: true,
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
     },
 
     concurrent: {
-      target: ['nodemon', ['stylus', 'jshint', 'concat', 'watch']],
+      target: [['stylus', 'jshint', 'concat', 'watch'],'nodemon' ],
       options: {
         logConcurrentOutput: true
       }
