@@ -2,10 +2,13 @@
 This is your root style file + what gets compiled into css. Import your style files here.
 */
 
+$fa-font-path ?= "http://netdna.bootstrapcdn.com/font-awesome/4.5.0/fonts"
+
 @import('_normalize')
 @import ('nib')
 @import('_colors')
 @import('_fonts')
 @import('_media-queries')
+@import "../../node_modules/Font-Awesome-Stylus/stylus/index"
 @import('_base')
 @import('components/*')

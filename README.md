@@ -4,6 +4,7 @@ A quick + simple front-end starter for personal projects. Includes:
 
 * node + express framework with mustasche templating
 * stylus for css preprocessing
+* font-awesome icons
 * grunt tasks that:
  * compiles CSS
  * concats JS
@@ -23,3 +24,4 @@ to launch server:
 # Want live reloads?
 
 Make sure you have a [live reload extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) installed
+
