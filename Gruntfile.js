@@ -26,6 +26,7 @@ module.exports = function(grunt) {
     },
 
     jshint: {
+      all: ['Gruntfile.js', 'app.js', 'assets/**/*.js'],
       options: {
         force: true,
         curly: true,
@@ -36,7 +37,6 @@ module.exports = function(grunt) {
           jQuery: true
         },
       },
-      beforeconcat: ['assets/js/*.js'],
     },
 
     watch: {
@@ -51,8 +51,8 @@ module.exports = function(grunt) {
         },
       },
       scripts :{
-        files: '**/*.js',
-        tasks: ['jshint'],
+        files: 'assets/js/*.js',
+        tasks: ['concat'],
         options: {
           interrupt: false,
         },
@@ -109,7 +109,6 @@ module.exports = function(grunt) {
     }
     
   });
-
 
   // Load plugins.
   grunt.loadNpmTasks('grunt-contrib-stylus');
