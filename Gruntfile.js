@@ -39,13 +39,24 @@ module.exports = function(grunt) {
       },
     },
 
+    stylint: {
+      options: {
+        configFile: false,
+        config: {
+          colons: 'never',
+          "sortOrder": "alphabetical",
+        },
+      },
+      src: ['assets/**/*.styl'],
+    },
+
     watch: {
       options: {
         livereload: true,
       },
       stylus: {
         files: '**/**.styl',
-        tasks: ['stylus'],
+        tasks: ['stylint','stylus'],
         options: {
           livereload: true,
         },
@@ -102,7 +113,7 @@ module.exports = function(grunt) {
     },
 
     concurrent: {
-      target: [['stylus', 'jshint', 'concat', 'watch'],'nodemon' ],
+      target: [['stylus', 'jshint', 'stylint', 'concat', 'watch'],'nodemon' ],
       options: {
         logConcurrentOutput: true
       }
@@ -117,6 +128,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-stylint');
 
   // Default task(s).
   grunt.registerTask('default', ['concurrent']);
