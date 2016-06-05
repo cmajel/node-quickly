@@ -5,9 +5,9 @@ var reload = require('reload');
 var path = require('path');
 var http = require('http');
 var swig = require('swig');
+var pug = require('pug');
 
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'pug');
 
 // // set paths
 app.set('views', __dirname + '/views');
@@ -18,7 +18,18 @@ var bye = "shot caller";
 var message = "yo yo yo";
 
 app.get('/', function (req, res) {
-  res.render('index', {hi:hi, bye:bye});
+  res.render('index', {title: "giiiiiii", hi:hi, bye:bye});
+});
+
+app.get('/blah', function (req, res) {
+  locals = {
+    hi: "baller",
+    bye: "shot caller",
+  }
+
+  locals['message'] = 'aaaaaaahhh'
+
+  res.render('blah', locals);
 });
 
 app.get('/other', function (req,res) {

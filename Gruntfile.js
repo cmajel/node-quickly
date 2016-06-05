@@ -50,9 +50,29 @@ module.exports = function(grunt) {
       src: ['assets/**/*.styl'],
     },
 
+    puglint: {
+      src: '**/**.pug',
+      options: {
+        requireClassLiteralsBeforeAttributes: true,
+        requireIdLiteralsBeforeAttributes: true,
+        requireLowerCaseAttributes: true,
+        requireLowerCaseTags: true,
+        validateIndentation: 2,
+        disallowDuplicateAttributes: true,
+        validateAttributeQuoteMarks: "\""
+      }
+    },
+
     watch: {
       options: {
         livereload: true,
+      },
+      pug: {
+        files: '**/**.pug',
+        tasks: ['puglint'],
+        options: {
+          livereload: true,
+        },
       },
       stylus: {
         files: '**/**.styl',
@@ -92,14 +112,6 @@ module.exports = function(grunt) {
               console.log(event.colour);
             });
 
-            // opens browser on initial server start
-            nodemon.on('config:update', function () {
-              // Delay before server listens on port
-              setTimeout(function() {
-                require('open')('http://localhost:3000');
-              }, 1000);
-            });
-
             // refreshes browser when server reboots
             nodemon.on('restart', function () {
               // Delay before server listens on port
@@ -113,7 +125,7 @@ module.exports = function(grunt) {
     },
 
     concurrent: {
-      target: [['stylus', 'jshint', 'stylint', 'concat', 'watch'],'nodemon' ],
+      target: [['stylus', 'jshint', 'stylint', 'puglint', 'concat', 'watch'],'nodemon' ],
       options: {
         logConcurrentOutput: true
       }
@@ -129,6 +141,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-stylint');
+  grunt.loadNpmTasks('grunt-puglint');
 
   // Default task(s).
   grunt.registerTask('default', ['concurrent']);
