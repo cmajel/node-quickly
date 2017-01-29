@@ -1,0 +1,156 @@
+.header
+  clearfix() 
+  position relative
+  width 100%
+  
+.header.page-wrap 
+  height 75px
+  padding 0 1rem
+  
+@media $mobile-med
+  .header.page-wrap 
+    background-color white
+    height 90px
+    margin-top 1rem
+    position relative
+    z-index 1
+
+.logo-wrap
+  background-color $accent-color
+  float left
+  height 100%
+  padding 0.5rem
+  position relative
+  width 50px
+  
+@media $mobile-med
+  .logo-wrap
+    padding 0.4rem
+    
+.logo-wrap svg 
+  left 50%
+  position absolute
+  top 50%
+  transform translate(-50%, -50%)
+  width 40px
+
+.logo
+  width auto
+
+.logo__fill 
+  background-color white
+  fill white
+
+.header__name 
+  color $dark-gray
+  font-size 1rem
+  left 75px
+  margin 0
+  position absolute
+  top 50%
+  transform translateY(-50%)
+  
+@media $mobile-med
+  .header__name
+    font-size 1.25rem
+    left 80px
+    
+.header__name--subhead
+  font-size 1rem
+  
+.header__menu
+  cursor pointer
+  font-size 1rem
+  position absolute
+  right 1rem
+  top 50%
+  transform translateY(-50%)
+  z-index 2
+  
+.header__menu .mdi::before
+  background-color $med-gray
+  color $white
+  cursor pointer
+  height 100%
+  margin-left 0.5rem
+  padding 5px
+  
+@media $mobile-med
+  .header__menu
+    display none
+
+.header__nav
+  bottom 0
+  position fixed
+  right 0
+  top 0
+  transition width 0.2s ease-out, display 0.2s ease-out 
+  visibility hidden
+  width 0
+  
+@media $mobile-med
+  .header__nav
+    display block
+    float right
+    position relative
+    visibility visible
+    width auto
+    
+.header__nav.active
+  background-color $white-opaque
+  border-left $border-default
+  height 100vh
+  padding-right 43px
+  padding-top 3rem
+  text-align right
+  transition width 0.2s ease-out
+  visibility visible
+  width 75%
+  z-index 1
+
+@media $mobile-med
+  .header__nav.active
+    background-color unset
+    height unset
+    padding-top unset
+    padding-right unset
+    position static
+    text-align center
+    width unset
+    
+.header__nav-item
+  display block
+  margin 1rem 0
+  padding 0.5rem 1rem
+  position relative
+  z-index 3
+  
+@media $mobile-med
+  .header__nav-item
+    display inline-block
+    height 100%
+    padding 0
+    margin 0
+    width 100px
+    
+  .header__nav-item:hover
+    cursor pointer
+
+@media $mobile-med
+  .header__nav-item::after 
+    display none
+
+.header__nav-item__inner 
+  font-size 1rem
+  transition color 0.3s ease-out
+
+@media $mobile-med
+  .header__nav-item__inner
+    left 50% 
+    position absolute
+    top 50%
+    color $dark-gray
+    transform translate(-50%, -50%) 
+
+  .header__nav-item:hover .header__nav-item__inner
+      color $accent-color

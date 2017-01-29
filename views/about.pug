@@ -1,0 +1,12 @@
+extends _base/layout.pug
+
+block content
+  section.about.text-wrap
+    figure.figure.about__figure
+      img.about__image(src="../images/about.jpg")
+    h1.about__headline
+      | About Me
+    for block in about.content_blocks
+      for textblock in block.text
+        p
+          | !{textblock}

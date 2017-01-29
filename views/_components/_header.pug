@@ -1,0 +1,20 @@
+include ../_mixins/build-nav.pug
+header.header.page-wrap.content-wrap
+  a(href="/")
+    .logo-wrap
+      include ../../public/images/cb_icon.svg
+    span.header__name
+      | Christine Bath
+      br
+      span.header__name--subhead
+        | Express Starter
+
+  a.header__menu.js-toggle.js-toggle-that.js-overlay.js-toggle-close(data-toggle="header__nav")
+    | menu
+    span.mdi.mdi-dots-horizontal
+  nav.header__nav.nav
+    
+    for item in navs.site_nav
+      a.header__nav-item.nav-item(href=item.link)
+        span.header__nav-item__inner.nav-item__inner
+          != item.text

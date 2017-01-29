@@ -1,0 +1,87 @@
+.card-wrap
+  transition all 0.2s ease-out
+
+@media $tablet
+  .card-wrap
+    float left
+    width 50%
+    
+@media $desktop
+  .card-wrap
+    width 33.33%
+
+.cards
+  text-align center
+  clearfix()
+  
+.card
+  background-color white
+  border 1px solid white
+  border-radius $border-radius
+  margin-bottom 2rem
+  margin-left auto
+  margin-right auto
+  max-width 360px
+  opacity 1
+  text-align center
+  width 100%
+  
+@media $mobile-med
+  .card
+    max-width 320px
+    
+.card__headline
+  margin-bottom 5px
+  margin-top 0
+  padding-top 12px
+
+.card__img 
+  position relative
+  width 100%
+
+.card__img-stage::after
+  bottom 0
+  content ''
+  display block 
+  height 3px
+  position absolute
+
+.card__meta 
+  padding-bottom 1rem
+  padding-left 1rem
+  padding-right 1rem
+  transition all 0.2s ease-out
+
+@media $tablet
+  .card__meta
+    height 100px
+    padding-bottom 0
+    width 100%
+
+.tags
+  padding 0
+  margin 0
+  
+.tag
+  display inline-block
+  font-size 0.875rem
+  line-height 1.5
+  list-style none
+  margin 0
+  
+.tag::after
+  slash-pseudo($med-gray)
+
+.tag:last-child::after
+  display none
+  
+// adjustments for interaction blocks
+
+.card__img-wrap
+  max-width 360px
+
+.card.cssmonster .card__img-wrap
+  display block
+  content ''
+  height 424px
+  background-color #2ff0a5

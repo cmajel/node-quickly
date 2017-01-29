@@ -1,0 +1,6 @@
+mixin build-nav(direction, items)
+  nav.nav(data-slide=direction, class="nav--" + direction)
+    for item in items
+      a.nav-item.js-hover-slide(class="nav-item--" + direction, data-slide-direction=direction, href=item.link)
+        span.nav-item__inner
+          != item.text

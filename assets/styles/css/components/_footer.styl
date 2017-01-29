@@ -1,0 +1,77 @@
+.footer
+  background-color $light-gray
+  border-top 1px solid darken($light-gray, 2%)
+  padding 2rem 1rem
+  font-size 1rem
+  position relative
+
+.footer__site-nav
+  margin-bottom 1rem
+  text-align center
+  width 20%
+  margin-left auto
+  margin-right auto
+  
+@media $tablet
+  .footer__site-nav
+    width auto
+
+.footer__site-nav .text-link
+  display block 
+  padding 0.5rem 0
+  margin-left 0.5rem
+  margin-right 0.5rem
+  color $dark-grey
+  position relative
+  transition all 0.2s ease-out
+  
+.footer__site-nav .text-link:hover
+  color $pool-blue
+  
+.footer__site-nav .text-link::after
+  content ''
+  display block 
+  position absolute
+  left 0
+  height 1px
+  background-color $pool-blue
+  bottom -3px
+  width 0
+  transition all 0.2s ease-out
+
+.footer__site-nav .text-link:hover::after
+  right 0
+  width 100%
+
+@media $tablet
+  .footer__site-nav .text-link
+    display inline-block
+    padding 0
+  
+  .footer__site-nav .text-link:last-child
+    margin-right 0
+
+
+.footer__social-nav
+  display block
+  margin-bottom 1rem
+  text-align center
+  
+  
+.footer__quote
+  display block
+  border-top $border-default
+  padding 1rem 0 0 0
+  font-size 0.75rem
+  text-align center
+  
+.footer__code 
+  position absolute
+  right 50%
+  transform translateX(-50%)
+  bottom 0
+  padding 5px
+  background-color $med-gray
+  
+.footer__code:hover
+  background-color $pool-blue
