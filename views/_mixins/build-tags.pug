@@ -1,0 +1,6 @@
+mixin build-tags(tags, view)
+  - var taglist = tags.sort()
+  ul.tags(class="tags--" + view)
+    for tag in taglist
+      li.tag
+        | #{tag}

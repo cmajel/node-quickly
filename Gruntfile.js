@@ -7,10 +7,10 @@ module.exports = function(grunt) {
     stylus: {
       build: {
         options: {
-          compress: false,
+          compress: true,
         },
         files: {
-          'public/css/main.css': 'assets/styles/main.styl',
+          'public/css/main.css': 'assets/styles/css/main.styl'
         }
       }
     },
@@ -20,13 +20,13 @@ module.exports = function(grunt) {
         stripBanners: true,
       },
       basic: {
-        src: ['assets/js/*.js'],
+        src: ['assets/js/main/*.js'],
         dest: 'public/js/main.js',
       },
     },
 
     jshint: {
-      all: ['Gruntfile.js', 'app.js', 'assets/**/*.js'],
+      all: ['Gruntfile.js', 'app/**/**.js', 'assets/js/main/**/*.js'],
       options: {
         force: true,
         curly: true,
@@ -41,17 +41,14 @@ module.exports = function(grunt) {
 
     stylint: {
       options: {
-        configFile: false,
-        config: {
-          colons: 'never',
-          "sortOrder": "alphabetical",
-        },
+        config: '.stylintrc',
+        ignore: '.stylintignore'
       },
-      src: ['assets/**/*.styl'],
+      src: ['assets/styles/css/components/**/**.styl', 'assets/styles/css/**/**.styl']
     },
 
     puglint: {
-      src: '**/**.pug',
+      src: '**/*.pug',
       options: {
         requireClassLiteralsBeforeAttributes: true,
         requireIdLiteralsBeforeAttributes: true,
@@ -64,26 +61,42 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      options: {
-        livereload: true,
+
+      statics: {
+        files: ['assets/styles/icons/'],
+        tasks: ['copy:icons']
       },
+
+      images: {
+        files: ['assets/images/**'],
+        tasks: ['copy:images']
+      },
+
       pug: {
-        files: '**/**.pug',
+        files: '**/*.pug',
         tasks: ['puglint'],
-        options: {
-          livereload: true,
-        },
       },
       stylus: {
-        files: '**/**.styl',
-        tasks: ['stylint','stylus'],
+        files: ['**/*.styl'],
+        tasks: ['stylint','stylus', 'copy'],
+      },
+      mainjs :{
+        files: 'assets/js/main/*.js',
+        tasks: ['concat'],
         options: {
-          livereload: true,
+          interrupt: false,
         },
       },
-      scripts :{
-        files: 'assets/js/*.js',
-        tasks: ['concat'],
+      vendorjs : {
+        files: 'assets/js/vendor/',
+        tasks: ['copy:js'],
+        options: {
+          interrupt: false,
+        },
+      },
+      scripts : {
+        files: '**/*.js',
+        tasks: ['jshint'],
         options: {
           interrupt: false,
         },
@@ -94,16 +107,45 @@ module.exports = function(grunt) {
           livereload: true
         }
       } 
+    },
 
+    copy: {
+      icons: {
+        files: [
+          { expand: true, 
+            cwd: 'assets/styles/icons/', 
+            src: ['**'], 
+            dest: 'public/css/icons'
+          },
+        ],
+      },
+      images: {
+        files: [
+          { expand: true, 
+            cwd: 'assets/images/', 
+            src: ['**'], 
+            dest: 'public/images'
+          },
+        ],
+        },
+      js: {
+        files: [
+          { expand: true, 
+            cwd: 'assets/js/vendor', 
+            src: ['**'], 
+            dest: 'public/js/vendor'
+          },
+        ],
+      },
     },
 
     nodemon: {
       dev: {
-        script: 'app.js',
+        script: 'app/app.js',
         options: {
           nodeArgs: ['--debug'],
           env: {
-            PORT: '3000'
+            PORT: '5000'
           },
           // omit this property if you aren't serving HTML files and 
           // don't want to open a browser tab on start
@@ -125,7 +167,7 @@ module.exports = function(grunt) {
     },
 
     concurrent: {
-      target: [['stylus', 'jshint', 'stylint', 'puglint', 'concat', 'watch'],'nodemon' ],
+      target: [['jshint', 'stylint', 'stylus', 'puglint', 'concat', 'copy', 'watch'],'nodemon' ],
       options: {
         logConcurrentOutput: true
       }
@@ -135,6 +177,7 @@ module.exports = function(grunt) {
 
   // Load plugins.
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');

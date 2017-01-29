@@ -1,0 +1,28 @@
+extends _base/layout.pug
+include _mixins/build-tags.pug
+
+block content
+  article.article
+    header.article-head.content-wrap
+      h1.article-head__headline
+        | #{current_project.title}
+      if current_project.subtitle
+        h3.article-head__subtitle
+          | #{current_project.subtitle}
+      if current_project.tags
+        +build-tags(current_project.tags, "article")
+
+    for item in current_project.post.content_blocks
+      if item.codepen
+        .media-well
+          | !{item.codepen.embed}
+
+      if item.text
+        .text-wrap
+          for textblock in item.text
+            - var first = textblock.charAt(0)
+            if first === '<'
+              | !{textblock}
+            else 
+              p
+                | !{textblock}

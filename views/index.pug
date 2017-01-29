@@ -1,9 +1,17 @@
-extends base/layout.pug
+extends _base/layout.pug
+include _mixins/build-tags.pug
+
 block content
-  h1
-    | hey
-  p 
-    | whaaahfhs
-  p 
-    | hmmm
-  ehfskfhkhfk
+  section.cards.content-wrap
+    for project in projects 
+      .card-wrap           
+        .card(class=project.name)
+          a(href='/projects/' + project.name)
+            .card__img-wrap
+              img.card__img(src=project.feature_image)
+          .card__meta
+            a(href='/projects/' + project.name)
+              h4.card__headline
+                | #{project.title}
+            if project.tags
+              +build-tags(project.tags, "all")

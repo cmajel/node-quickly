@@ -1,0 +1,5 @@
+footer.footer
+  nav.footer__social-nav
+    for item in navs.social_nav
+      a.social-nav__item(href= item.link, target="_blank")
+        span.social-nav__icon.mdi(class='mdi-' + item.icon_name)
